@@ -5,8 +5,10 @@ This package provides syntax highlighting and automatic indentation for OFX file
 Installation
 
 Download the package from GitHub.
-Extract the contents of the ZIP file to your Sublime Text "Packages" folder.
-Place IndentOFX.py into Packages, and OFX-sublime-syntax there as well
+Extract the contents of the ZIP file.
+Learn the $path$ to your Sublime Text "Packages" folder (you can find it in Sublime Text -> Preferences -> Browse Packages...) 
+Place IndentOFX.py and OFX-sublime-syntax there or run install.sh using $path$ as an argument
+bash install.sh $path$
 Restart Sublime Text.
 Usage
 
