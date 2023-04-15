@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -eq 0 ]; then
-    echo "Usage: install.sh <folder_name>"
+    echo "Usage: install.sh <folder_name> where folder name in a path to your Sublime Plugins (check via Preferences -> Browse Packages...)"
     exit 1
 fi
 
