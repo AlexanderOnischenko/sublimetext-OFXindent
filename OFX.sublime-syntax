@@ -1,0 +1,82 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/syntax.html
+name: OFX
+file_extensions: log_decrypted.log
+scope: source.example-c
+contexts:
+  main:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: '"'
+      scope: punctuation.definition.string.begin.example-c
+      push: double_quoted_string
+
+    # Comments begin with a '//' and finish at the end of the line
+    - match: '//'
+      scope: punctuation.definition.comment.example-c
+      push: line_comment
+
+    # Numbers
+    #- match: '\b(-)?[0-9.]+\b'
+    #  scope: constant.numeric.example-c
+
+    # TimeAndDate
+    - match: '(\d\d:\d\d:\d\d.[0-9]+|\d\d\d\d-\d\d-\d\d\s\d\d:\d\d:\d\d|\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ|\d\d\d\d-\d\d-\d\d)'
+      scope: constant.numeric.example-c
+  
+    # Request:
+    - match: '\bRequest\b'
+      scope: keyword.control.example-c
+
+    # UID
+    - match: '........-....-....-....-............'
+      scope: keyword.control.example-c
+
+    # OFX_message start
+    - match: '<OFX>'
+      scope: punctuation.definition.string.begin.example-c
+      push: OFX_message
+
+  OFX_message:
+    - meta_scope: string.unquoted
+    - match: '<\/OFX>'
+      scope: punctuation.definition.string.end.example-c
+      pop: true
+    - match: "<\/"
+      scope: punctuation.definition.tag.begin
+      push: tag_close
+    - match: "<"
+      scope: punctuation.definition.tag.begin
+      push: tag_open
+    - match: "[^<]*"
+      scope: keyword.control.example-c
+
+  tag_open:
+    - meta_scope: meta.tag
+    - match: ">"
+      scope: punctuation.definition.tag.end
+      pop: true
+
+  tag_close:
+    - meta_scope: meta.tag
+    - match: '>'
+      scope: punctuation.definition.tag.end
+      pop: true
+
+
+  double_quoted_string:
+    - meta_scope: string.quoted.double.example-c
+    - match: '\\.'
+      scope: constant.character.escape.example-c
+    - match: '"'
+      scope: punctuation.definition.string.end.example-c
+      pop: true
+
+  line_comment:
+    - meta_scope: comment.line.example-c
+    - match: $
+      pop: true
+
+
+
