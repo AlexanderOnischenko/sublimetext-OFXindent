@@ -7,5 +7,6 @@ fi
 
 path=$1
 
-cp IndentOFX.py $path/
+cp indent_ofx.py $path/
+cp Main.sublime-menu $path/
 cp OFX.sublime-syntax $path/
