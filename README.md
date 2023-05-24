@@ -1,3 +1,5 @@
+DEPENDENCIES: please install the following package first: https://github.com/alek-sys/sublimetext_indentxml
+
 Sublime Text Syntax Highlighter and Indentation Tool for OFX
 
 This package provides syntax highlighting and automatic indentation for OFX files in Sublime Text.
