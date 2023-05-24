@@ -51,8 +51,8 @@ class BaseIndentCommand(sublime_plugin.TextCommand):
                 view.replace(edit, alltextreg, s)
 
     def indent(self, s):
+        print('we are here')
         return s
-
 
 class AutoIndentCommand(BaseIndentCommand):
     def get_text_type(self, s):
@@ -78,7 +78,7 @@ class AutoIndentCommand(BaseIndentCommand):
         if text_type == 'json':
             command = IndentJsonCommand(self.view)
         if text_type == 'OFX':
-            command = IndentOFXCommand(self.view)
+            command = IndentOfxCommand(self.view)
         if text_type == 'notsupported':
             return s
 
@@ -87,7 +87,7 @@ class AutoIndentCommand(BaseIndentCommand):
     def check_enabled(self, lang):
         return True
 
-class IndentOFXCommand(BaseIndentCommand):
+class IndentOfxCommand(BaseIndentCommand):
     def indent(self, s):
         matches = re.findall(r'<\?OFX.*?><\/OFX>', s, re.DOTALL)
         incindent = 3
@@ -147,4 +147,4 @@ class IndentOFXCommand(BaseIndentCommand):
         return s
 
     def check_enabled(self, language):
-        return (language == "xml") or (language == "plain text")
+        return (language == "ofx")

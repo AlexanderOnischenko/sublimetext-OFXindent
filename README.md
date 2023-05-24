@@ -1,4 +1,4 @@
-DEPENDENCIES: please install the following package first: https://github.com/alek-sys/sublimetext_indentxml
+(Inspired by the following package https://github.com/alek-sys/sublimetext_indentxml)
 
 Sublime Text Syntax Highlighter and Indentation Tool for OFX
 
